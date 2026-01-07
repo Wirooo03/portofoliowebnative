@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wira Yudha Aji Pratama - Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Caveat:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Kalam', cursive;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .paper-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #fefefe;
+            border: 3px solid #222;
+            border-radius: 8px;
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.8);
+            position: relative;
+            padding: 30px;
+        }
+        
+        .paper-container::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: #222;
+            border-radius: 8px;
+            z-index: -1;
+            transform: rotate(-0.5deg);
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed #333;
+        }
+        
+        .logo {
+            width: 50px;
+            height: 50px;
+            border: 3px solid #222;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            font-size: 24px;
+            font-weight: bold;
+            transform: rotate(-5deg);
+        }
+        
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: #222;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 400;
+            position: relative;
+            padding: 5px 10px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            transform: rotate(-2deg);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #222;
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 15px;
+            border: 2px solid #222;
+            border-radius: 20px;
+            background: #f0f0f0;
+            cursor: pointer;
+        }
+        
+        .theme-toggle input {
+            width: 40px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        
+        .text-box {
+            background: #fffef7;
+            border: 3px solid #222;
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            box-shadow: 4px 4px 0 rgba(0,0,0,0.6);
+            transform: rotate(-1deg);
+        }
+        
+        .text-box::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px dashed #ccc;
+            border-radius: 15px;
+            pointer-events: none;
+        }
+        
+        h1 {
+            font-family: 'Caveat', cursive;
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #222;
+        }
+        
+        .description {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: #222;
+            color: white;
+            border: 3px solid #222;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+        }
+        
+        .contact-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0 rgba(0,0,0,0.3);
+        }
+        
+        .emoji {
+            font-size: 20px;
+        }
+        
+        .scroll-text {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+        }
+        
+        .photo-box {
+            background: #fff;
+            border: 3px solid #222;
+            border-radius: 20px;
+            padding: 20px;
+            position: relative;
+            box-shadow: 4px 4px 0 rgba(0,0,0,0.6);
+            transform: rotate(1deg);
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            min-height: 350px;
+        }
+        
+        .doodle-circle {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border: 4px solid #222;
+            border-radius: 50%;
+            top: 20px;
+            right: 20px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            transform: rotate(15deg);
+        }
+        
+        .sketch-line {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            width: 150px;
+            height: 100px;
+        }
+        
+        .sketch-line svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            nav {
+                gap: 15px;
+            }
+            
+            nav a {
+                font-size: 16px;
+            }
+            
+            h1 {
+                font-size: 36px;
+            }
+            
+            .text-box, .photo-box {
+                transform: rotate(0deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="paper-container">
+        <header>
+            <div class="logo">W</div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#gallery">Gallery</a>
+            </nav>
+            <div class="theme-toggle">
+                <span>Theme</span>
+                <input type="checkbox" id="theme">
+            </div>
+        </header>
+        
+        <div class="content">
+            <div class="text-box">
+                <h1>Wira Yudha Aji Pratama</h1>
+                <p class="description">
+                    I'm a junior web developer with an interest in graphic design and a passion for sharing knowledge. I enjoy creating clean interfaces, learning new technologies, and helping others understand technical concepts more easily.
+                </p>
+                <a href="#contact" class="contact-btn">
+                    <span class="emoji">👋</span>
+                    CONTACT ME
+                </a>
+                <p class="scroll-text">Scroll down for more info!</p>
+            </div>
+            
+            <div class="photo-box">
+                <div class="photo-placeholder">
+                    Your Photo Here
+                </div>
+                <div class="doodle-circle">✨</div>
+            </div>
+        </div>
+        
+        <div class="sketch-line">
+            <svg viewBox="0 0 150 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 50 Q 40 20, 70 50 T 140 50" stroke="#222" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <path d="M5 55 L 25 55 L 15 45 M 15 65 L 15 45" stroke="#222" stroke-width="3" fill="none" stroke-linecap="round"/>
+            </svg>
+        </div>
+    </div>
+    
+    <script>
+        const themeToggle = document.getElementById('theme');
+        const paperContainer = document.querySelector('.paper-container');
+        
+        themeToggle.addEventListener('change', function() {
+            if (this.checked) {
+                document.body.style.background = 'linear-gradient(135deg, #2d3436 0%, #000000 100%)';
+                paperContainer.style.background = '#1e1e1e';
+                paperContainer.style.color = '#fff';
+            } else {
+                document.body.style.background = 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)';
+                paperContainer.style.background = '#fefefe';
+                paperContainer.style.color = '#222';
+            }
+        });
+    </script>
+</body>
+</html>

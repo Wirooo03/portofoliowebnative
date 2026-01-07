@@ -1,0 +1,21 @@
+<style>
+    .box {
+  width: 100px;
+  height: 100px;
+  background: gray;
+}
+
+.box.active {
+  background: red;
+}
+
+</style>
+<button id="btn">Klik</button>
+<div class="box"></div>
+
+<script>
+    document.getElementById("btn").onclick = () => {
+  document.querySelector(".box").classList.toggle("active");
+};
+
+</script>
